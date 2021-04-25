@@ -113,9 +113,9 @@ class RNTwilioPhone {
     });
   }
 
-  static async startCall(to: string, calleeName?: string, from?: string) {
+  static async startCall(to: string, calleeName?: string, from?: string, otheParams = {}) {
     const accessToken = await RNTwilioPhone.fetchAccessToken();
-    const params: ConnectParams = { to };
+    const params: ConnectParams = { to, ...otheParams };
 
     if (from) {
       params.from = from;
